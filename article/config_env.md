@@ -241,6 +241,11 @@ nvcc -arch=sm_37 helloword.cu -o helloword
 
 ![24](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/config_env/24.png)
 
-最后 Azure ML 是计时收费的，所以如果你有段时间不使用，可以将其停止，以免产生不必要的费用。
+要注意的是 Azure ML 是计时收费的，所以如果你有段时间不使用，可以将其停止，以免产生不必要的费用。
 
 ![25](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/config_env/25.png)
+
+最后这里整理一份给大学生们的免费资源：
+
+Azure 免费资源：[https://aka.ms/studentgetazure](https://aka.ms/studentgetazure)
+GitHub 教育包：[https://aka.ms/GitHubStudentDevPackSS23](https://aka.ms/GitHubStudentDevPackSS23)

@@ -1,0 +1,25 @@
+name: Replace image URLs
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  replace-image-urls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Replace image URLs
+        run: |
+          python3 replace_image_urls.py
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "Replace image URLs"
+          git push origin HEAD

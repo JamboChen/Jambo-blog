@@ -1,8 +1,8 @@
 import openai
 import pandas
 
-openai.api_key = "bdc947a18c07495593efdfa0fe63a5ce"
-openai.api_base = "https://ai-jambo.openai.azure.com/"
+openai.api_key = ""
+openai.api_base = ""
 openai.api_type = "azure"
 openai.api_version = "2023-03-15-preview"
 model = "text-embedding-ada-002"

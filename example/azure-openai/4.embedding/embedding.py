@@ -5,10 +5,10 @@ openai.api_key = ""
 openai.api_base = ""
 openai.api_type = "azure"
 openai.api_version = "2023-03-15-preview"
-model = "text-embedding-ada-002"
+model: str = "text-embedding-ada-002"
 
 
-def get_embedding(text):
+def get_embedding(text: str) -> list:
     response = openai.Embedding.create(input=text, engine="text-embedding-ada-002")
     embedding = response["data"][0]["embedding"]
     assert len(embedding) == 1536

@@ -1,0 +1,175 @@
+{
+    "generations": [
+        [
+            {
+                "text": " 1",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            },
+            {
+                "text": " 1",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            }
+        ],
+        [
+            {
+                "text": " 4",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            },
+            {
+                "text": " 4",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            }
+        ],
+        [
+            {
+                "text": " 9",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            },
+            {
+                "text": " 9",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            }
+        ],
+        [
+            {
+                "text": " 16",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            },
+            {
+                "text": " 16",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            }
+        ],
+        [
+            {
+                "text": " 25",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            },
+            {
+                "text": " 25",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            }
+        ],
+        [
+            {
+                "text": " 36",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            },
+            {
+                "text": " 36",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            }
+        ],
+        [
+            {
+                "text": " 49",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            },
+            {
+                "text": " 49",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            }
+        ],
+        [
+            {
+                "text": " 64",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            },
+            {
+                "text": " 64",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            }
+        ],
+        [
+            {
+                "text": " 81",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            },
+            {
+                "text": " 81",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            }
+        ],
+        [
+            {
+                "text": "",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            },
+            {
+                "text": "",
+                "generation_info": {
+                    "finish_reason": "stop",
+                    "logprobs": null
+                }
+            }
+        ]
+    ],
+    "llm_output": {
+        "token_usage": {
+            "prompt_tokens": 40,
+            "total_tokens": 58,
+            "completion_tokens": 18
+        },
+        "model_name": "text-davinci-003"
+    },
+    "run": {
+        "run_id": "cf7fefb2-2e44-474d-918f-b8695a514646"
+    }
+}

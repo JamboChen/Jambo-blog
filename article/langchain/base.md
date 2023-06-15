@@ -12,7 +12,7 @@ LangChain 基本上已经将这些你可能会使用到的功能打包好了，�
 
 在使用 LangChain 之前，建议先了解 OpenAI API 的调用，否则即使是使用 LangChain，参数和用法也可能不容易理解。具体可以参考我之前的教程：<>
 
-下面我们会使用 Azure OpenAI API 作为演示。
+下面我们会使用 Azure OpenAI API 作为演示。另外，LangChain 将由文字续写（补全）的语言模型称为 llm ，拥有聊天界面（输入为聊天记录）的语言模型称为聊天模型。
 
 ## 安装
 
@@ -261,4 +261,82 @@ prompt_template.save("awesome_prompt.json") # 保存为 json
 from langchain.prompts import load_prompt
 prompt_template = load_prompt("prompt.json")
 ```
+
+## Chain 
+
+Chain 是 LangChain 里非常重要的概念（毕竟都放在名字里了），它与管道（Pipeline）类似，就是将多个操作组装成一个函数（流水线），从而使得代码更加简洁方便。
+
+比如我们执行一个完整的任务周期，需要先生成 prompt ，将 prompt 给 llm 生成文字，然后可能还要对生成的文字进行其他处理。更进一步，我们或许还要记录任务每个阶段的日志，或者更新其他数据。这些操作如果都写出来，那么代码会非常冗长，而且不容易复用，但是如果使用 Chain ，你就可以将这些工作都打包起来，并且代码逻辑也更清晰。你还可以将多个 Chain 组合成一个更复杂的 Chain 。
+
+我们首先创建一个 llm 对象和一个 prompt 模板。
+
+```python
+from langchain.llms import AzureOpenAI
+from langchain import PromptTemplate
+
+llm = AzureOpenAI(deployment_name="text-davinci-003", temperature=0)
+prompt = PromptTemplate(
+    input_variables=["input"],
+    template="""
+    将给定的字符串进行大小写转换。
+    例如：
+    输入： ABCdef
+    输出： abcDEF
+    
+    输入： AbcDeF
+    输出： aBCdEf
+    
+    输入： {input}
+    输出： 
+    """,
+)
+```
+
+接下来我们可以通过 `LLMChain` 将 llm 和 prompt 组合成一个 Chain 。这个 Chain 可以接受用户输入，然后将输入填入 prompt 中，最后将 prompt 交给 llm 生成结果。另外如果你用的是聊天模型，那么使用的 Chain 是 `ConversationChain`。
+
+```python
+from langchain.chains import LLMChain
+
+chain = LLMChain(llm=llm, prompt=prompt)
+print(chain.run("HeLLo"))
+# -> hEllO
+```
+
+如果 prompt 中有多个输入变量，可以使用字典一次将它们传入。
+
+```python
+print(chain.run({"input": "HeLLo"}))
+# -> hEllO
+```
+
+### Debug 模式
+
+上面都是些简单的例子，只牵扯到少量的输入变量，但在实际使用中可能会有大量的输入变量，并且 llm 的输出还是不固定的，这就使得我们很难从最重的结果反推问题所在。为了解决这个问题，LangChain 提供了 `verbose` 模式，它会将每个阶段的输入输出都打印出来，这样就可以很方便地找到问题所在。
+
+```python
+chain = LLMChain(llm=llm, prompt=prompt)
+print(chain.run("HeLLo"))
+```
+
+```text
+> Entering new  chain...
+Prompt after formatting:
+
+    将给定的字符串进行大小写转换。
+    例如：
+    输入： ABCdef
+    输出： abcDEF
+    
+    输入： AbcDeF
+    输出： aBCdEf
+    
+    输入： HeLLo
+    输出： 
+    
+
+> Finished chain.
+ hEllO
+```
+
+### 组合 Chain
 

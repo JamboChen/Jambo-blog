@@ -314,8 +314,8 @@ print(chain.run({"input": "HeLLo"}))
 上面都是些简单的例子，只牵扯到少量的输入变量，但在实际使用中可能会有大量的输入变量，并且 llm 的输出还是不固定的，这就使得我们很难从最重的结果反推问题所在。为了解决这个问题，LangChain 提供了 `verbose` 模式，它会将每个阶段的输入输出都打印出来，这样就可以很方便地找到问题所在。
 
 ```python
-chain = LLMChain(llm=llm, prompt=prompt)
-print(chain.run("HeLLo"))
+chain_verbose = LLMChain(llm=llm, prompt=prompt, verbose=True)
+print(chain_verbose.run({"input": "HeLLo"}))
 ```
 
 ```text
@@ -340,3 +340,37 @@ Prompt after formatting:
 
 ### 组合 Chain
 
+一个 Chain 对象只能完成一个很简单的任务，但我们可以像搭积木一样将多个简单的动作组合在一起，就可以完成更复杂的任务。其中最简单的是顺序链 `SequentialChain`，它将多个 Chain 串联起来，前一个 Chain 的输出将作为后一个 Chain 的输入。不过要注意的是，因为这只是个最简单的链，所以它不会对输入进行任何处理，也不会对输出进行任何处理，所以你需要保证每个 Chain 的输入输出都是兼容的，并且它要求每个 Chain 的 prompt 都只有一个输入变量。
+
+
+下面，我们先计算输入数字的平方，然后将平方数转换成罗马数字。
+
+```python
+from langchain.chains import SimpleSequentialChain
+
+llm = AzureOpenAI(deployment_name="text-davinci-003", temperature=0)
+prompt1 = PromptTemplate(
+    input_variables=["base"], template="{base}的平方是： "
+)
+chain1 = LLMChain(llm=llm, prompt=prompt1)
+
+prompt2 = PromptTemplate(input_variables=["input"], template="将{input}写成罗马数字是： ")
+chain2 = LLMChain(llm=llm, prompt=prompt2)
+
+overall_chain = SimpleSequentialChain(chains=[chain1, chain2], verbose=True)
+overall_chain.run(3)
+
+```
+
+```text
+> Entering new  chain...
+
+
+9
+IX
+
+> Finished chain.
+'IX'
+```
+
+LangChain 已经预先准备了许多不同 Chain 的组合，具体可以参考官方文档，这里就先不展开了。

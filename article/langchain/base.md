@@ -1,5 +1,9 @@
 title: LangChain
 
+大家好，我是学生大使 Jambo。在上一个系列中，我们介绍了关于 Azure OpenAI API 的使用。如果你有跟着教程使用过，那么你应该能感觉到仅仅是调用 API 是非常简单的，繁琐的是如何将 API 与你的应用结合起来。接下来，我将会介绍一个名为 LangChain 的库，它可以帮助你更方便地将大语言模型（llm）结合到你的应用中。
+
+我也会将这个做成一个系列，最终目标是用 LangChain 实现一个可以根据资料源回答问题的聊天机器人。
+
 # 为什么要用 LangChain
 
 许多开发者希望将像 GPT 这样的大语言模型整合到他们的应用中。而这些应用不仅仅是简单地将用户的输入传递给 GPT，然后将 GPT 的输出返回给用户。
@@ -10,7 +14,7 @@ LangChain 基本上已经将这些你可能会使用到的功能打包好了，�
 
 # 基本用法
 
-在使用 LangChain 之前，建议先了解 OpenAI API 的调用，否则即使是使用 LangChain，参数和用法也可能不容易理解。具体可以参考我之前的教程：<>
+在使用 LangChain 之前，建议先了解 Azure OpenAI API 的调用，否则即使是使用 LangChain，参数和用法也可能不容易理解。具体可以参考我之前的系列教程：<>
 
 下面我们会使用 Azure OpenAI API 作为演示。另外，LangChain 将由文字续写（补全）的语言模型称为 llm ，拥有聊天界面（输入为聊天记录）的语言模型称为聊天模型。
 
@@ -27,7 +31,7 @@ pip install openai
 
 ### 实例化模型对象
 
-在使用 OpenAI API 之前，我们需要先设置环境变量。如果你使用的是 OpenAI 原生的接口，就只需要设置 `api_key`；如果是 Azure 则还需要设置 `api_version` 和 `api_base` ，具体的值与使用 `openai` 库调用 azure 接口一样，可以参考我之前的教程：<>
+在使用 API 之前，我们需要先设置环境变量。如果你使用的是 OpenAI 原生的接口，就只需要设置 `api_key`；如果是 Azure OpenAI API 则还需要设置 `api_version` 和 `api_base` ，具体的值与使用 `openai` 库调用 Azure API 一样，可以参考我之前的教程：<>
 
 ```python
 import os
@@ -36,11 +40,11 @@ os.environ["OPENAI_API_VERSION"] = ""
 os.environ["OPENAI_API_BASE"] = ""
 ```
 
-当然，这些值也可以在 terminal 中使用 `export` （在 Linux 下）命令设置；或者在 .env 文件中设置，然后用 `python-dotenv` 库导入进环境变量。
+当然，这些值也可以在 terminal 中使用 `export` （在 Linux 下）命令设置，或者在 .env 文件中设置，然后用 `python-dotenv` 库导入进环境变量。
 
 LangChain 的大语言模型（llm）的类都封装在 `llms` 中，我们需要从中导入 `AzureOpenAI` 类，并设置相关的参数。其中指定模型的参数名是 `deployment_name`，剩下的参数就是 OpenAI API 的参数了。事实上，上面在环境变量中设置的 API 信息也可以在这里作为参数传入，但考虑到便利性和安全性，仍建议在环境变量中设置 API 信息。
 
-要注意的是，prompt 和 stop 参数并不是在这里传入的，而是在下面生成文本时传入。
+要注意的是，prompt 和 stop 参数并不是在这里传入的（stop 可以但是会报警告），而是在下面生成文本时传入。
 
 ```python
 from langchain.llms import AzureOpenAI
@@ -105,7 +109,7 @@ llm.save("llm.yaml")
 
 ```python
 prompt = "1 + 1 = "
-stop = ["="]
+stop = ["\n"]
 # 下面三种生成方法是等价的
 res1 = llm(prompt, stop=stop)
 res2 = llm.predict(prompt, stop=stop)
@@ -123,22 +127,26 @@ res3 = llm.generate([prompt], stop=stop).generations[0][0].text
 ```python
 import os
 os.environ["OPENAI_API_KEY"] = ""
+os.environ["OPENAI_API_VERSION"] = ""
+os.environ["OPENAI_API_BASE"] = ""
 ```
 
-LangChain 的聊天模型包装在 `langchain.chat_models` 下。我们对聊天模型输入的 prompt 不再是文字，而是消息记录，消息记录中是用户和模型轮流对话的内容，这些消息被 LangChain 包装为 `AIMessage`、`HumanMessage`、`SystemMessage`，其中的 `SystemMessage` 可以理解为给模型设置的人设。
+LangChain 的聊天模型包装在 `langchain.chat_models` 下，我们这里一样使用 Azure OpenAI 进行演示，导入的是 `AzureChatOpenAI` 类。
+
+如果你有读过我之前直接调用 API 的教程，那么应该清楚我们对聊天模型输入的 prompt 不再是文字，而是消息记录，消息记录中是用户和模型轮流对话的内容，这些消息被 LangChain 包装为 `AIMessage`、`HumanMessage`、`SystemMessage`，分别对应原先 API 中的 `assistant`、`user`、`system` 。
 
 ```python
-from langchain.chat_models import ChatOpenAI
+from langchain.chat_models import AzureChatOpenAI
 from langchain.schema import (
     AIMessage,
     HumanMessage,
     SystemMessage
 )
 
-chat = ChatOpenAI(temperature=0)
+chat = AzureChatOpenAI(deployment_name="gpt-35-turbo", temperature=0)
 ```
 
-我们先构建一个初始的消息记录，当然 `SystemMessage` 并不是必须的。
+我们先构建一个初始的消息记录，当然 `SystemMessage` 并不是必须的。聊天模型用直接调用对象的方式生成消息，而他返回的会是一个 `AIMessage` 对象。
 
 ```python
 messages = [
@@ -148,15 +156,19 @@ messages = [
 chat(messages)
 ```
 
-和之前一样，聊天模型的 `generate()` 方法也支持对多个聊天记录生成消息
+```text
+AIMessage(content='Hello world.', additional_kwargs={}, example=False)
+```
+
+和之前一样，聊天模型的 `generate()` 方法也支持对多个聊天记录生成消息，不过这里的返回值是一个 `LLMResult` 对象。
 
 ```python
-result = chat.generate([messages, messages])
+chat.generate([messages, messages])
 ```
 
 ## LLMResult
 
-上面说 llm 的 `generate()` 方法返回的是一个 `LLMResult` 对象，它由三个部分组成：`generations` 储存生成的文字和对应的信息、`llm_output` 储存 token 使用量和使用的模型、`run` 储存了唯一的 `run_id`，这是为了方便在生成过程中调用回调函数。通常我只需要关注 `generations` 和 `llm_output` 。
+上面说 llm 的 `generate()` 方法返回的是一个 `LLMResult` 对象，它由三个部分组成：`generations` 储存生成的内容和对应的信息、`llm_output` 储存 token 使用量和使用的模型、`run` 储存了唯一的 `run_id`，这是为了方便在生成过程中调用回调函数。通常我只需要关注 `generations` 和 `llm_output` 。
 
 为了展示 `LLMResult` 的结果，这里我们重新创建一个 llm 对象，并设置参数 `n=2` ，代表模型对于每个 prompt 会生成两次结果，这个值默认是 `n=1`。
 
@@ -211,7 +223,31 @@ print(llm_result.json())
 }
 ```
 
-可以看到 `generations` 列表储存了模型为对应 prompt 生成的内容，由之前的代码可知一它的长度为 10 。因为设置了 `n=2` 所以生成内容的 list 中包含了两个生成文本信息。
+可以看到 `generations` 是一个二维数组，第一维的每个元素代表对应的 prompt 生成的结果，第二维的每个元素代表这个 prompt 的一次生成结果，因为我们设置了 `n=2` ，所以每个 prompt 会生成两次结结果。
+
+对于生成（补全）模型，生成的结果会是一个字典，具体生成的内容在 `text` 字段。而对于聊天模型，它会把结果包装成 `ChatGeneration` 对象，其中 `text` 字段是生成的文字，`message` 字段则是文字对应的 `AIMessage` 对象，例如：
+
+```text
+LLMResult(generations=[
+        [
+            ChatGeneration(
+                text='Hello world.', 
+                generation_info=None, 
+                message=AIMessage(
+                    content='Hello world.', 
+                    additional_kwargs={}, 
+                    example=False)
+            )
+        ]
+    ], 
+    llm_output={
+        'token_usage': {
+            'completion_tokens': 6, 'prompt_tokens': 80, 'total_tokens': 86
+        }, 
+    'model_name': 'gpt-3.5-turbo'
+    }, 
+    run=RunInfo(run_id=UUID('fffa5a38-c738-4eef-bdc4-0071511d1422')))
+```
 
 
 ## Prompt 模板
@@ -274,7 +310,7 @@ Chain 是 LangChain 里非常重要的概念（毕竟都放在名字里了），
 from langchain.llms import AzureOpenAI
 from langchain import PromptTemplate
 
-llm = AzureOpenAI(deployment_name="text-davinci-003", temperature=0)
+chat = AzureChatOpenAI(deployment_name="gpt-35-turbo", temperature=0)
 prompt = PromptTemplate(
     input_variables=["input"],
     template="""
@@ -297,7 +333,7 @@ prompt = PromptTemplate(
 ```python
 from langchain.chains import LLMChain
 
-chain = LLMChain(llm=llm, prompt=prompt)
+chain = LLMChain(llm=chat, prompt=prompt)
 print(chain.run("HeLLo"))
 # -> hEllO
 ```
@@ -335,7 +371,7 @@ Prompt after formatting:
     
 
 > Finished chain.
- hEllO
+hEllO
 ```
 
 ### 组合 Chain
@@ -348,18 +384,17 @@ Prompt after formatting:
 ```python
 from langchain.chains import SimpleSequentialChain
 
-llm = AzureOpenAI(deployment_name="text-davinci-003", temperature=0)
+chat = AzureChatOpenAI(deployment_name="gpt-35-turbo", temperature=0)
 prompt1 = PromptTemplate(
     input_variables=["base"], template="{base}的平方是： "
 )
-chain1 = LLMChain(llm=llm, prompt=prompt1)
+chain1 = LLMChain(llm=chat, prompt=prompt1)
 
-prompt2 = PromptTemplate(input_variables=["input"], template="将{input}写成罗马数字是： ")
-chain2 = LLMChain(llm=llm, prompt=prompt2)
+prompt2 = PromptTemplate(input_variables=["input"], template="将{input}写成罗马数字是：")
+chain2 = LLMChain(llm=chat, prompt=prompt2)
 
 overall_chain = SimpleSequentialChain(chains=[chain1, chain2], verbose=True)
 overall_chain.run(3)
-
 ```
 
 ```text

@@ -2,7 +2,7 @@
 
 根据输入的问题匹配合适的资料条目是件非常困难的事情，毕竟这相当于是要手搓一个搜索引擎。虽然也有像 Azure 认知搜索之类的服务，但是如果你要在本地进行储存以及搜索，更好的方法无疑是使用 embedding。
 
-Embedding 是一种将文本转换为向量的方法，这样我们就可以使用向量的相似度来判断两个文本的相似度。而 Azure OpenAI 也提供了 embedding 模型，并且 LangChain 也将其整合到了一起，初次之外还有其他各种储存向量的数据库，比如 Milvus、Faiss 等等，但这里我们将会用 Redis 作为示范。
+Embedding 是一种将文本转换为向量的方法，这样我们就可以使用向量的相似度来判断两个文本的相似度。
 
 # Embedding
 
@@ -41,11 +41,15 @@ doc_result = embeddings.embed_documents([text])
 
 # 储存向量
 
-```bash
+在我们将文本转换成向量后，我们还要将其储存起来，这样我们才能在之后的搜索中使用。LangChain 整合了许多储存向量的数据库，这里我们用 Redis 作为例子。具体来说，我这里的 Redis 是在 WSL 上通过 Docker 运行的 RediSearch。
 
+在使用 Redis 储存向量前，我们首先需要安装 Python 的 Redis 库。
+
+```bash
+pip install redis
 ```
 
-我们按照上次教程里的方法，从 PDF 中提取文本信息，然后和刚刚创建的 embedding 模型一起使用，将文本转换为向量，然后储存起来。
+我们按照上次教程里的方法，从 PDF 中提取文本信息
 
 ```python
 from langchain.vectorstores.redis import Redis
@@ -56,9 +60,16 @@ loader = PyPDFLoader("./contract.pdf")
 documents = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=350, chunk_overlap=20)
 docs = text_splitter.split_documents(documents)
+```
 
+然后将文本和先前创建的 embedding 模型传入 `Redis.from_documents` 方法中，这样就可以将文本转换为向量并储存到 Redis 中了。
+
+```python
 rds = Redis.from_documents(
-    docs, embeddings, redis_url="redis://localhost:6379", index_name="link"
+    docs,
+    embeddings,
+    redis_url="redis://localhost:6379",
+    index_name="link",
 )
 ```
 

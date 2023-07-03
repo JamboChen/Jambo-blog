@@ -8,7 +8,7 @@
 
 在晋升到 Alpha 后，你将获得 **Visual Studio 企业版，以及每月 150 美元的 Azure 额度等**福利。而想要升级到 Beta，你需要完成一些更具挑战性的任务，比如举办活动，以证明你的影响力。在升级到 Beta 后，你将收到 Microsoft 的 **Beta 礼品包**。最后，如果你想要升级到 Gold，你需要保持活跃度，举办更多的活动，进行更多的社区贡献。Gold 的申请是在每年的 12 月和 6 月进行审查，如果你成功升级到 Gold，你将获得更多的福利，比如 Gold 礼品包、微软最有价值专家提名等。
 
-![Alt text](../../img/student_ambassadors/alpha_to_beta/2.png)
+![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/student_ambassadors/alpha_to_beta/2.png)
 
 # 我在升级到 Beta 前做了什么？
 
@@ -20,7 +20,7 @@
 
 具体来说，我下载了演讲在 B 站的回放，并将其上传至学生大使的 OneDrive。然后，我登录[学生大使的网站](https://studentambassadors.microsoft.com/)，进入"我的账户"，点击"Events"，选择"Add Event"，填写相关信息，并将视频的 OneDrive 共享链接添加到活动详情中，最后提交了申请。第二天早上，学生大使 PM 通过 Teams 联系我，询问是否有任何能够支持参与人数的证据。于是，我将演讲回放的播放次数截图和视频链接发送给他，并解释了当时直播中没有记录参与人数的原因。幸运的是，PM 回复说证据是有效的，并批准了我的升级申请（"This screenshot actually works! Approved. This qualified you for Beta Advancement. CONGRATULATIONS!!"）。隔天早上，我收到了升级至 Beta 的确认邮件。
 
-![Alt text](../../img/student_ambassadors/alpha_to_beta/1.png)
+![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/student_ambassadors/alpha_to_beta/1.png)
 
 # 新的起点
 

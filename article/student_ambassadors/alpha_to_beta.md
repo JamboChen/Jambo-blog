@@ -16,7 +16,7 @@ title: 我的微软学生大使成长经历- 从 Alpha 到 Beta 的升级经验�
 
 在晋升到 Alpha 后，你将获得 **Visual Studio 企业版订阅，以及每月 150 美元的 Azure 额度等**福利。而想要升级到 Beta，你需要完成一些更具挑战性的任务，比如举办活动，以证明你的影响力。在升级到 Beta 后，你将收到 Microsoft 的 **Beta 礼品包**。最后，如果你想要升级到 Gold，你需要保持活跃度，举办更多的活动，进行更多的社区贡献。Gold 的申请是在每年的 12 月和 6 月进行审查，如果你成功升级到 Gold，你将获得更多的福利，比如 Gold 礼品包、微软最有价值专家提名等。
 
-![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/student_ambassadors/alpha_to_beta/2.png)
+![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/student_ambassadors/alpha_to_beta/benefits.png)
 
 我最初是在某个技术交流群中看到有人分享学生大使计划的链接，我就点进行想说看看，结果发现福利还不错，便想说申请看看。但是发现申请还蛮复杂，除了个人信息外，还要写英语小作文介绍自己的经历，以及参与技术社区的经历，并且还要录一段视频。我看到这里确实是有放弃的想法，因为我此前参与的活动确实不多，并且我非常不擅长写作。但那些福利又让我心动，再加上我认为有这一经历对我以后的发展也是有好处的，便决定硬着头皮试一下。
 

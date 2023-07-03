@@ -24,7 +24,7 @@ title: 我的微软学生大使成长经历- 从 Alpha 到 Beta 的升级经验�
 
 1 月多的时候，我收到了申请通过的邮件，我有些意外但也很开心。我照着邮件里的链接进行入职程序，然后便进入了 New 阶段，也收到了学生大使的账号。在这个阶段，我需要完成一个 Microsoft Learn 路径，只需要几个小时就能完成，没过几天我便自动升级到 Alpha 了。
 
-在 Alpha 阶段，我获得了 Visual Studio 企业版订阅，以及每月 150 美元的 Azure 额度等福利。我也开始了解微软提供的一些服务，比如 Github Codespaces、Azure ML 等，并将我的收获写成教程发在 [CSDN](https://blog.csdn.net/chenjambo) 和 [Dev.To](https://dev.to/jambochen) 上。同时，我也了解到微软有推出 Azure OpenAI Services，但需要填表申请才能使用，于是我便用 edu 邮箱进行申请，没想到很快就通过了。我也将这个过程写成了教程，当然也包括申请后的使用教程，做成了一个系列：
+在 Alpha 阶段，我获得了 Visual Studio 企业版订阅，以及每月 150 美元的 Azure 额度等福利。我也开始了解微软提供的一些服务，比如 Github Codespaces、Azure ML 等，并将我的收获写成教程发在 [CSDN](https://blog.csdn.net/chenjambo) 和 [Dev.To](https://dev.to/jambochen) 上。同时，我也了解到微软有推出 Azure OpenAI Service，但需要填表申请才能使用，于是我便用 edu 邮箱进行申请，没想到很快就通过了。我也将这个过程写成了教程，当然也包括申请后的使用教程，做成了一个 Azure OpenAI Service 的系列：
 1. [学生党，快来 Azure 一起学习 OpenAI （一）：注册 Azure 和申请 OpenAI](https://blog.csdn.net/chenjambo/article/details/129783819)
 2. [来 Azure 学习 OpenAI 二 - 环境构建](https://blog.csdn.net/chenjambo/article/details/129901929)
 3. [来 Azure 学习 OpenAI 三 - 用 Python 调用 Azure OpenAi API](https://blog.csdn.net/chenjambo/article/details/130185519?spm=1001.2014.3001.5501)
@@ -35,7 +35,7 @@ title: 我的微软学生大使成长经历- 从 Alpha 到 Beta 的升级经验�
 
 ![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/student_ambassadors/alpha_to_beta/add_event.png)
 
-举办活动的要求对我一个社恐是十分困难的。我也曾想过举办线上活动，但是我认为我没有足够的影响力，而且我也不知道该如何宣传，因此我便放弃了这个想法。但后来我在某个技术群看到微软的 Reactor 活动，那是个线上活动，以直播的方式分享技术。我也认为我在 Alpha 待了这么久，也该做点什么了，于是我硬着头皮到微软 Reactor 上直播分享，而分享的内容正是我之前写的 Azure OpenAI Services 的教程。虽然我在直播前很紧张，但还是勉强完成了分享，而且也有人参与了我的直播。虽然我只是参加微软的活动，但我作为演讲者也应该能算是“举办”吧。虽然不太确定，但我还是将这个活动的信息、录像都提交了上去，没想到 2 天后我就收到了晋升 Beta 的邮件。这对我而言是个惊喜，也是鼓舞，也让我对冲击 Gold 有了信心。
+举办活动的要求对我一个社恐是十分困难的。我也曾想过举办线上活动，但是我认为我没有足够的影响力，而且我也不知道该如何宣传，因此我便放弃了这个想法。但后来我在某个技术群看到微软的 Reactor 活动，那是个线上活动，以直播的方式分享技术。我也认为我在 Alpha 待了这么久，也该做点什么了，于是我硬着头皮到微软 Reactor 上直播分享，而分享的内容正是我之前写的 Azure OpenAI Service 的教程。虽然我在直播前很紧张，但还是勉强完成了分享，而且也有人参与了我的直播。虽然我只是参加微软的活动，但我作为演讲者也应该能算是“举办”吧。虽然不太确定，但我还是将这个活动的信息、录像都提交了上去，没想到 2 天后我就收到了晋升 Beta 的邮件。这对我而言是个惊喜，也是鼓舞，也让我对冲击 Gold 有了信心。
 
 （如果有人想看我的直播回放，可以点击以下图片↓）
 
@@ -44,6 +44,7 @@ title: 我的微软学生大使成长经历- 从 Alpha 到 Beta 的升级经验�
 我分享这些不仅仅是对我前一阶段的总结，更是学生大使这条路的开门砖，希望有更多大中华地区的同学加入到微软学生大使的行列，也期待有更多人加入到微软学生大使计划，申请链接在[这里](https://studentambassadors.microsoft.com/)。
 
 与我相关的链接：
+- Github：https://github.com/JamboChen
 - CSDN：https://blog.csdn.net/chenjambo
 - Dev.To：https://dev.to/jambochen
 - 微信公众号：

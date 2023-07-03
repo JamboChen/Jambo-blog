@@ -2,7 +2,7 @@ title: 我的微软学生大使成长经历- 从 Alpha 到 Beta 的升级经验�
 
 大家好，我是微软学生大使 Jambo。前几天，我从微软学生大使 Alpha 升级到了 Beta，离最高的 Gold 又进了一步！我非常开心能在暑假到来前升级到微软学生大使 Beta ，这不仅是对我过去几个月努力的回报，更是对我未来的鼓励。
 
-![Alt text](../../img/student_ambassadors/alpha_to_beta/alpha.png)
+![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/student_ambassadors/alpha_to_beta/alpha.png)
 
 回想起最初申请学生大使时，我对这个计划的认识还很模糊，只是觉得这是一个很好的锻炼机会，抱着试试看的心情申请，当然更多的也是被福利所吸引。而申请通过后，我才真正意识到这个计划的意义和价值，它的核心并不只是技术，更多的是分享和传播，是一种精神，是一种对技术的热爱和对社区的贡献。这不仅仅要求过硬的技术，还要能有足够的社交能力。当然，这对我而言也是一种挑战，因为我在此之前一直都是自己一个人埋头学习，很少与人分享技术，更不用说参与社区、组织活动了。但是，我做到了，我参与了很多活动，分享了很多技术，认识了很多志同道合的朋友，这些都是我以前从未有过的经历，我也从中学到了很多，收获了很多，升级到 Beta 便是证明。
 
@@ -33,13 +33,13 @@ title: 我的微软学生大使成长经历- 从 Alpha 到 Beta 的升级经验�
 
 但是仅仅是写教程是不够的，升级到 Beta 的要求是能够举办活动，需要 15 人参与，并且至少要有 20 分钟时间是专注于分享微软相关的技术。可以是线上或者线下，但一定要是学生大使自己举办的，并且一次活动只能作为一位学生大使的申请条件。如果你举办了活动，那么就可以到[学生大使的页面](https://studentambassadors.microsoft.com/studentambassadors/account/)，在 "Events" 中的 "Add Events" 进行申请。在申请时，你需要填写活动的信息，以及参与的人数，以及活动的照片或者视频。如果你的活动通过审核，那么你就可以升级到 Beta 了。
 
-![Alt text](../../img/student_ambassadors/alpha_to_beta/add_event.png)
+![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/student_ambassadors/alpha_to_beta/add_event.png)
 
 举办活动的要求对我一个社恐是十分困难的。我也曾想过举办线上活动，但是我认为我没有足够的影响力，而且我也不知道该如何宣传，因此我便放弃了这个想法。但后来我在某个技术群看到微软的 Reactor 活动，那是个线上活动，以直播的方式分享技术。我也认为我在 Alpha 待了这么久，也该做点什么了，于是我硬着头皮到微软 Reactor 上直播分享，而分享的内容正是我之前写的 Azure OpenAI Services 的教程。虽然我在直播前很紧张，但还是勉强完成了分享，而且也有人参与了我的直播。虽然我只是参加微软的活动，但我作为演讲者也应该能算是“举办”吧。虽然不太确定，但我还是将这个活动的信息、录像都提交了上去，没想到 2 天后我就收到了晋升 Beta 的邮件。这对我而言是个惊喜，也是鼓舞，也让我对冲击 Gold 有了信心。
 
 （如果有人想看我的直播回放，可以点击以下图片↓）
 
-[![Alt text](../../img/student_ambassadors/alpha_to_beta/cover.png)](https://www.bilibili.com/video/BV1Uo4y1b7GE/)
+[![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/student_ambassadors/alpha_to_beta/cover.png)](https://www.bilibili.com/video/BV1Uo4y1b7GE/)
 
 我分享这些不仅仅是对我前一阶段的总结，更是学生大使这条路的开门砖，希望有更多大中华地区的同学加入到微软学生大使的行列，也期待有更多人加入到微软学生大使计划，申请链接在[这里](https://studentambassadors.microsoft.com/)。
 
@@ -47,4 +47,4 @@ title: 我的微软学生大使成长经历- 从 Alpha 到 Beta 的升级经验�
 - CSDN：https://blog.csdn.net/chenjambo
 - Dev.To：https://dev.to/jambochen
 - 微信公众号：
-  ![Alt text](<../../img/student_ambassadors/alpha_to_beta/qecode.png>)
+  ![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/article/student_ambassadors/img/student_ambassadors/alpha_to_beta/qecode.png>)

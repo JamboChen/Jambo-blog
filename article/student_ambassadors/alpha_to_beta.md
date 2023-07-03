@@ -48,4 +48,4 @@ title: 我的微软学生大使成长经历- 从 Alpha 到 Beta 的升级经验�
 - CSDN：https://blog.csdn.net/chenjambo
 - Dev.To：https://dev.to/jambochen
 - 微信公众号：
-  ![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/article/student_ambassadors/img/student_ambassadors/alpha_to_beta/qecode.png>)
+  ![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/student_ambassadors/alpha_to_beta/qrcode.png)

@@ -16,6 +16,8 @@ loader = PyPDFLoader("./contract.pdf")
 documents = loader.load()
 ```
 
+# 文本分割
+
 但仅仅是按页进行分割，仍然是不够的，因为一页中仍然包含了太多的字数，如果将来将这些文本放在 prompt 的上下文中，会占据大量的 token，而这些文本对于当下所问的问题不一定都是有用的，所以我们需要将这些文本再进行分割。
 
 LangChain 提供了几种分割器，可以分割代码、段落、Markdown 标题。这里我们使用 `RecursiveCharacterTextSplitter` ，他会把文本按照字符进行分割，直到每个文本段的长度足够小。它默认的分割列表是 `["\n\n", "\n", " ", ""]`，这样它可以尽可能把段落、句子或单词放在一起。
@@ -30,3 +32,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
 docs = text_splitter.split_documents(documents)
 ```
+
+这样我们就很容易的得到了一个文本列表，而不用考虑具体的分割细节了。
+
+当然，这里只是简单的带大家了解一下 LangChain 的文本提取功能，还有其他很多格式和对应的细节没有介绍到，比如 Word、HTML、PPT 等等，如果你想了解更多，还是要自己去看看[官方的文档](https://python.langchain.com/docs/modules/data_connection/document_loaders/)。

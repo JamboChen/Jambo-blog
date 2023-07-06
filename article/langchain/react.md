@@ -2,7 +2,7 @@
 
 早在 GPT-3 诞生之初，就有人发现通过示例引导 GPT 在回答问题时展示其思考过程，可以大大提高回答的准确性。他们将这种方法称为“思维链（Chain-of-Thought）”1。后来，人们发现只需在原始问题上添加“让我们一步一步思考（Let’s think step by step）”这个魔法提示，就能达到同样的效果，而且不需要费力去写示例。最后，只需让 GPT 根据先前生成的思考过程生成最终答案即可。
 
-![Alt text](../../img/langchain/react/cot.png)
+![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/langchain/react/cot.png)
 
 COT 的过程十分简单，但我想强调的是，为了能够达到更好的效果，在用户看来的一次对话中，可能需要多次使用 LLM，就比如 COT 和上篇教程中用 LLM 去优化资料库的查询语句，甚至在这过程中可能还需要 LLM 判断是否要调用如搜索引擎这样的外部工具。这一整套动作，在 LangChain 中被称为“代理（Agents）”。
 

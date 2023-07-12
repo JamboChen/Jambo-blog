@@ -8,7 +8,7 @@
 
 后来有人发现，只需要加上 “Let's think step by step.” 这一魔法提示，就能达到一样的效果，还不需要写示例。并且他还在这基础上，额外让 GPT 根据它前面附带思考过程的回答，再总结出一个更简洁的答案，相当于把思考过程隐藏起来。
 
-![Alt text](../../img/langchain/react/zore_shot_cot.png)
+![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/langchain/react/zore_shot_cot.png)
 
 我这里想强调的是，我们用 LLM 构建应用时，完全可以在输出最终答案前多次用 LLM 分析、拆解、解决问题。就像深度学习网络中的介于输入和输出之间的隐藏层，我们可以在这里加入更多的逻辑，让 LLM 能够更好的理解问题，从而得出更好的答案。
 
@@ -25,7 +25,7 @@
 
 这三个步骤会不断循环，直到思考步骤判断已经找到答案，并在下面的行动中给出最终答案。
 
-![Alt text](../../img/langchain/react/react.png)
+![Alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/langchain/react/react.png)
 
 其实你仔细回想一下，这个过程和我们人类思考的过程是类似的。我们在思考时，会根据当前的信息判断是否需要做出某些行动，然后根据行动的结果来判断是否已经找到答案，如果没有就继续思考，直到找到答案为止。
 

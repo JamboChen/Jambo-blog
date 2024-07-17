@@ -19,7 +19,7 @@ NVIDIA NIM API 是一种用于构建和部署自定义 AI 模型的 API,它旨�
 3. 点击 "Python" 选项卡，并点击 "Get API Key" 按钮。![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/ocr/1.png)
 4. 点击 "Generate Key"，复制并保存你的 API Key。![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/ocr/2.png)
 
-## ORC 识别
+## OCR 识别
 
 我现在手上有一张图片，上面是某食品包装的营养成分表。
 

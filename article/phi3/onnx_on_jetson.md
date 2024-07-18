@@ -147,12 +147,12 @@ The table lists various products along with their sales figures for Qtr 1, Qtr 2
 
 我们可以用 [Jtop](https://github.com/rbonghi/jetson_stats) 查看资源的使用情况：
 
-![alt text](../../img/phi3/onnx/jtop.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/onnx/jtop.png)
 
 以上推理演示是在 Jetson Orin Nano 上运行，使用 Int 4 量化模型。可以看到 Python 进程占用了 5.4 GB 显存来运行推理，而在推理过程中 CPU 几乎没有负载，GPU 则几乎满载。
 
 我们可以修改示例脚本，给一些关键节点用 `time` 函数计时，可以看到推理的速度是非常快的。
 
-![alt text](../../img/phi3/onnx/infer.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/onnx/infer.png)
 
 而这一切都仅仅是在一台功耗只有 15W 的设备上完成的。

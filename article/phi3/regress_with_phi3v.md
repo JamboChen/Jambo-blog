@@ -16,7 +16,7 @@
 
 ### 例子
 
-![alt text](../../img/phi3/regress_with_phi3v/example.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/regress_with_phi3v/example.png)
 
 从图中，我们可以很容易得出两个结论：
 1. 随着 X 越大，Y 也呈现增大的趋势。
@@ -24,11 +24,11 @@
 
 这张图并不满足上面提到的条件，因此如果直接用线性回归方法去拟合这组数据，结果可能不理想。下图中，请关注 R-squared 值，这个值越接近 1，说明模型越好。
 
-![alt text](../../img/phi3/regress_with_phi3v/lse.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/regress_with_phi3v/lse.png)
 
 通过一些变换方法，我们可以得到一个更好的模型。
 
-![alt text](../../img/phi3/regress_with_phi3v/wlse.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/regress_with_phi3v/wlse.png)
 
 当然，有很多变换方法，具体使用哪种变换，很多时候是凭借经验和直觉“看”出来的。
 
@@ -40,7 +40,7 @@
 
 ## 回归分析的流程
 
-![alt text](../../img/phi3/regress_with_phi3v/flow.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/regress_with_phi3v/flow.png)
 
 这是一个简化的流程图，虽然看起来仍然复杂，但你不需要完全理解它。你只需知道，这表示我们可以将过程细化，把一个复杂的问题分解成多个简单的小问题，然后按照流程图一步步操作。
 
@@ -48,11 +48,11 @@
 
 我们可以方便地用 LangGraph 按照上图实现回归分析。以下是 LangGraph 根据添加的节点自动生成的状态图。
 
-![alt text](../../img/phi3/regress_with_phi3v/langgraph.jpeg)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/regress_with_phi3v/langgraph.jpeg)
 
 我们也可以方便地用 LangChain 的 Nvidia NIM 集成来调用 Phi3-vision。你可以在 [Nvidia NIM](https://build.nvidia.com/microsoft/phi-3-vision-128k-instruct) 查看 Phi3-vision 的详细信息，登录后可以在如下位置找到你的 API key。
 
-![alt text](../../img/phi3/regress_with_phi3v/nim_key.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/regress_with_phi3v/nim_key.png)
 
 ```python
 from langchain_nvidia_ai_endpoints import ChatNVIDIA
@@ -63,17 +63,17 @@ llm = ChatNVIDIA(model="microsoft/phi-3-vision-128k-instruct")
 
 对于节点的分支路由，我们只需问 Phi3-vision 一个非常简单的问题，比如在 `Constant variance` 节点中，我们会问：“You are a data analysis expert. Does this set of data have constant variance? You only need to answer True or False.”
 
-![alt text](../../img/phi3/regress_with_phi3v/nim_example.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/regress_with_phi3v/nim_example.png)
 
 在 NIM 的在线测试中，我们可以看到 Phi3-vision 对上面例子的回答是 False。我们只需根据回答的 True 或 False 来决定下一步操作。
 
 在检查数据是否满足正态分布的节点，程序会自动生成 Q-Q plot（一种判断数据是否符合正态分布的图表），然后我们再问 Phi3-vision：“You are a data analysis expert. The attached figure is the Q-Q plot of this set of data. Does this set of data conform to the normal hypothesis? You only need to answer True or False.”
 
-![alt text](../../img/phi3/regress_with_phi3v/nim_q-q_plot.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/regress_with_phi3v/nim_q-q_plot.png)
 
 我们得到了 True 的回答，那么根据流程，我们可以知道接下来只需要做加权的回归算法即可。但从图中也可以看出，有多种权重计算方式，我们可以将这些方法列出，并用程序自动生成判断需要的图表，由 Phi3-vision 给我们一个最可能的选项。
 
-![alt text](../../img/phi3/regress_with_phi3v/nim_branch.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/regress_with_phi3v/nim_branch.png)
 
 在这个例子中，Phi3-vision 认为第一种权重算法最适合。接下来我们只需自动跳转到对应的算法函数，剩余的工作就是让程序自动计算结果。
 
@@ -81,7 +81,7 @@ llm = ChatNVIDIA(model="microsoft/phi-3-vision-128k-instruct")
 
 具体的代码实现可以在[这里](../../example/phi3/regress_with_phi3.ipynb) 找到。而下图则是我将最开始的例子用 LangGraph 进行回归的结果。与我自己分析的结果是一致的，但整个过程是自动化的，并且只花费了不到 5 秒的时间。
 
-![alt text](../../img/phi3/regress_with_phi3v/resp.png)
+![alt text](https://raw.githubusercontent.com/JamboChen/Jambo-blog/master/img/phi3/regress_with_phi3v/resp.png)
 
 ## Phi3-vision 的优势
 

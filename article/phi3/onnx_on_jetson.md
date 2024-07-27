@@ -2,6 +2,12 @@
 
 本文的目标是在 Jetson 平台上运行 ONNX 格式的 Phi-3-vision 量化模型，并能够成功推理图片+文本的对话任务。
 
+文章撰写环境：
+
+- [Jetpack 6.0 [L4T 36.3.0]](https://developer.nvidia.com/embedded/jetpack-sdk-60)
+- 编译平台：Jetson Orin
+- 推理平台：Jetson Orin Nano
+
 ## Jetson 是什么
 
 Jetson 平台是由 NVIDIA 推出的一系列小型 arm64 设备，具备强大的 GPU 运算能力，专为边缘计算和人工智能应用设计。它使用 Linux 系统，能够在低功耗的情况下执行复杂的计算任务，非常适合开发嵌入式 AI 和机器学习项目。
@@ -16,13 +22,14 @@ Jetson 平台是由 NVIDIA 推出的一系列小型 arm64 设备，具备强大�
 
 到文章撰写时，onnxruntime-genai 仍没有针对 aarch64 + gpu 的预编译版本，因此我们需要自行编译。
 
-## 编译 onnxruntime-genai
+## 准备工作
 
-文章撰写环境：
+升级 Cmake
 
-- [Jetpack 6.0 [L4T 36.3.0]](https://developer.nvidia.com/embedded/jetpack-sdk-60)
-- 编译平台：Jetson Orin
-- 推理平台：Jetson Orin Nano
+```bash
+sudo apt remove cmake
+pip3 install cmake -U
+```
 
 ### 克隆 onnxruntime-genai 仓库
 
@@ -31,26 +38,23 @@ git clone https://github.com/microsoft/onnxruntime-genai
 cd onnxruntime-genai
 ```
 
-### 安装 ONNX Runtime
-
-从 [github release](https://github.com/microsoft/onnxruntime/releases) 页面下载 aarch64 版本的 ONNX Runtime，并解压得到头文件和必要的库文件。
-
-> 注意：确保下载的是 aarch64 版本。如果有更新的版本，可以替换链接中的版本号。
+出于未知的原因，无法在最新的 onnxruntime-genai 仓库上成功编译，因此我们需要切换到一个较早的 commit。以下是经测试可以成功编译的最新 commit：
 
 ```bash
-wget https://github.com/microsoft/onnxruntime/releases/download/v1.18.1/onnxruntime-linux-aarch64-1.18.1.tgz
-tar -xvf onnxruntime-linux-aarch64-1.18.1.tgz
-mv onnxruntime-linux-aarch64-1.18.1 ort
+git checkout 940bc102a317e886f488ad5e120533b96a34ddcd
 ```
 
-ONNX Runtime 并没有提供 aarch64 + GPU 的预编译版本，但我们可以从 [dusty-nv](https://github.com/dusty-nv/jetson-containers/tree/master/packages/onnxruntime) 提供的镜像中获取所需的库文件。
+###  ONNXRuntime
 
-以下命令将从 dusty-nv 的镜像中复制所需的库文件到 ort/lib 目录。
+这里你可以自己从 ONNXRuntime repo 编译，但这对于 Jetson 平台来说是一个非常耗时的过程。因此我们将直接使用 [dusty-nv](https://github.com/dusty-nv) 为 Jetson 平台编译好的版本。
 
 ```bash
-id=$(docker create dustynv/onnxruntime:r36.2.0)
-docker cp $id:/usr/local/lib/libonnxruntime*.so* - > ort/lib/
-docker rm -v $id
+http://jetson.webredirect.org:8000/jp6/cu124/onnxruntime-gpu-1.19.0.tar.gz
+mkdir ort
+tar -xvf onnxruntime-gpu-1.19.0.tar.gz -C ort
+
+mv ort/include/onnxruntime/onnxruntime_c_api.h ort/include/
+rm -rf ort/include/onnxruntime/
 ```
 
 ### 编译 onnxruntime-genai
@@ -78,7 +82,6 @@ python3 build.py --use_cuda --cuda_home /usr/local/cuda-12.2 --skip_tests --skip
 ```bash
 export CUDA_PATH=/usr/local/cuda-12.2
 ```
-
 
 你可以导航到 whl 文件所在目录，也可以将 whl 文件复制到其他目录用以下命令安装。
 
